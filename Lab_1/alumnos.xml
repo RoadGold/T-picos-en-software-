@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alumnos>
+  <alumno id='1'>
+    <nombre>Juan</nombre>
+    <apellido>Pérez</apellido>
+    <grado>10</grado>
+  </alumno>
+  <alumno id='2'>
+    <nombre>Maria</nombre>
+    <apellido>Garcia</apellido>
+    <grado>11</grado>
+  </alumno>
+  <alumno id='3'>
+    <nombre>Carlos</nombre>
+    <apellido>Rodriguez</apellido>
+    <grado>12</grado>   
+  </alumno>
+</alumnos>
