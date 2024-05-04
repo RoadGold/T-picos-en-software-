@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vehiculos>
+    <coche id='1'>
+        <marca>Toyota</marca>
+        <modelo>Corolla</modelo>
+        <fechaCompra>2002</fechaCompra>
+    </coche>
+    <coche id='2'>
+        <marca>Honda</marca>
+        <modelo>Civic</modelo>
+        <fechaCompra>2003</fechaCompra>
+    </coche>
+</vehiculos>    
