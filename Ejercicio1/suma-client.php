@@ -4,7 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $b = $_POST['b'];
 
     // Definir la URL del servicio web
-    $url_servicio_web = "http://localhost/laboratorios/lab_1/suma-serv.php";
+    $url_servicio_web = "http://localhost/T-picos-en-software-/Ejercicio1/suma-serv.php";
 
     // Enviar una solicitud al servicio web utilizando cURL
     $ch = curl_init($url_servicio_web . "?a=$a&b=$b");
@@ -14,16 +14,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Convertir la respuesta XML a un objeto PHP
     $respuesta = simplexml_load_string($respuesta_xml);
+
+    // Preparar el encabezado de la respuesta
+    header('Content-Type: application/xml');
+    ob_start();
+    // Generar la respuesta en formato XML
+    echo '<?xml version="1.0" encoding="UTF-8"?>';
+    echo '<respuesta>';
+    ob_end_flush();
     // Verificar si la carga XML fue exitosa
     if($respuesta !== false) {
         // Extraer el mensaje de la respuesta XML
         $mensaje = $respuesta->mensaje;
         // Mostrar el mensaje en la pantalla
-        echo "La suma de $a y $b es: $mensaje";
+        echo "<mensaje>La suma de $a y $b es: $mensaje</mensaje>";
     } else {
         // Manejar el caso en el que la carga XML falló
-        echo "Error al procesar la respuesta XML.";
+        echo '<mensaje>Error al procesar la respuesta XML.</mensaje>';
     }
+    echo '</respuesta>';
 }
 ?>
 
