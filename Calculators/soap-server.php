@@ -26,6 +26,21 @@ class CalculatorService {
         }
         return array('result' => $a / $b);
     }
+
+    public function Modulus($parameters) {
+        $a = $parameters->a;
+        $b = $parameters->b;
+        if ($b == 0) {
+            throw new SoapFault("DivisionByZero", "Cannot divide by zero");
+        }
+        return array('result' => $a % $b);
+    }
+
+    public function Power($parameters) {
+        $a = $parameters->a;
+        $b = $parameters->b;
+        return array('result' => pow($a, $b));
+    }
 }
 
 $options = array(
