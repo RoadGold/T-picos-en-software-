@@ -140,6 +140,36 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
+
+        <operation name="Subtract">
+            <soap:operation soapAction="http://example.com/calculator/Subtract"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="Multiply">
+            <soap:operation soapAction="http://example.com/calculator/Multiply"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="Divide">
+            <soap:operation soapAction="http://example.com/calculator/Divide"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
         <!-- Repeat similar bindings for Subtract, Multiply, Divide -->
     </binding>
 
