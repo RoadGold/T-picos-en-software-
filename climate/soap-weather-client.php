@@ -8,13 +8,17 @@ $options = array(
 
 $client = new SoapClient('weather.wsdl', $options);
 
-try {
-    $result = $client->GetWeather(array('location' => 'London'));
-    echo "Location: London<br/>";
-    echo "Temperature: " . $result->temperature . "°C<br/>";
-    echo "Humidity: " . $result->humidity . "%<br/>";
-    echo "State: " . $result->state . "<br/>";
-} catch (SoapFault $fault) {
-    echo "Error: {$fault->faultcode}, {$fault->faultstring}";
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $a = $_GET["location"];
+
+    try {
+        $result = $client->GetWeather(array('location' => $a));
+        echo "Location: " . $a . "<br/>";
+        echo "Temperature: " . $result->temperature . "°C<br/>";
+        echo "Humidity: " . $result->humidity . "%<br/>";
+        echo "State: " . $result->state . "<br/>";
+    } catch (SoapFault $fault) {
+        echo "Error: {$fault->faultcode}, {$fault->faultstring}";
+    }
 }
 ?>

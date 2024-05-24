@@ -23,12 +23,18 @@
                     </xsd:all>
                 </xsd:complexType>
             </xsd:element>
-            <!-- Repeat similar definitions for Subtract, Multiply, Divide -->
             <xsd:element name="SubtractRequest">
                 <xsd:complexType>
                     <xsd:all>
                         <xsd:element name="a" type="xsd:float"/>
                         <xsd:element name="b" type="xsd:float"/>
+                    </xsd:all>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="SubtractResponse">
+                <xsd:complexType>
+                    <xsd:all>
+                        <xsd:element name="result" type="xsd:float"/>
                     </xsd:all>
                 </xsd:complexType>
             </xsd:element>
@@ -62,64 +68,76 @@
                     </xsd:all>
                 </xsd:complexType>
             </xsd:element>
+            <xsd:element name="ModulusRequest">
+                <xsd:complexType>
+                    <xsd:all>
+                        <xsd:element name="a" type="xsd:float"/>
+                        <xsd:element name="b" type="xsd:float"/>
+                    </xsd:all>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ModulusResponse">
+                <xsd:complexType>
+                    <xsd:all>
+                        <xsd:element name="result" type="xsd:float"/>
+                    </xsd:all>
+                </xsd:complexType>
+            </xsd:element>
         </xsd:schema>
     </types>
 
     <message name="AddRequest">
         <part name="parameters" element="tns:AddRequest"/>
     </message>
-
     <message name="AddResponse">
         <part name="parameters" element="tns:AddResponse"/>
     </message>
-
     <message name="SubtractRequest">
         <part name="parameters" element="tns:SubtractRequest"/>
     </message>
-
     <message name="SubtractResponse">
         <part name="parameters" element="tns:SubtractResponse"/>
     </message>
-
     <message name="MultiplyRequest">
         <part name="parameters" element="tns:MultiplyRequest"/>
     </message>
-
     <message name="MultiplyResponse">
         <part name="parameters" element="tns:MultiplyResponse"/>
     </message>
-
     <message name="DivideRequest">
         <part name="parameters" element="tns:DivideRequest"/>
     </message>
-
     <message name="DivideResponse">
         <part name="parameters" element="tns:DivideResponse"/>
     </message>
-
-    <!-- Repeat similar messages for Subtract, Multiply, Divide -->
+    <message name="ModulusRequest">
+        <part name="parameters" element="tns:ModulusRequest"/>
+    </message>
+    <message name="ModulusResponse">
+        <part name="parameters" element="tns:ModulusResponse"/>
+    </message>
 
     <portType name="CalculatorPortType">
         <operation name="Add">
             <input message="tns:AddRequest"/>
             <output message="tns:AddResponse"/>
         </operation>
-
         <operation name="Subtract">
             <input message="tns:SubtractRequest"/>
             <output message="tns:SubtractResponse"/>
         </operation>
-
         <operation name="Multiply">
             <input message="tns:MultiplyRequest"/>
             <output message="tns:MultiplyResponse"/>
         </operation>
-
         <operation name="Divide">
             <input message="tns:DivideRequest"/>
             <output message="tns:DivideResponse"/>
         </operation>
-        <!-- Repeat similar operations for Subtract, Multiply, Divide -->
+        <operation name="Modulus">
+            <input message="tns:ModulusRequest"/>
+            <output message="tns:ModulusResponse"/>
+        </operation>
     </portType>
 
     <binding name="CalculatorBinding" type="tns:CalculatorPortType">
@@ -133,7 +151,6 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-
         <operation name="Subtract">
             <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Subtract"/>
             <input>
@@ -143,9 +160,8 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-
         <operation name="Multiply">
-            <soap:operation soapAction="http://localhost/tsf/guia2/calculator/calculator/Multiply"/>
+            <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Multiply"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -153,9 +169,17 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-
         <operation name="Divide">
-            <soap:operation soapAction="http://localhost/tsf/guia2/calculator/calculator/Divide"/>
+            <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Divide"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>  
+            </output>
+        </operation>
+        <operation name="Modulus">
+            <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Modulus"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -163,12 +187,11 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
-        <!-- Repeat similar bindings for Subtract, Multiply, Divide -->
     </binding>
 
     <service name="CalculatorService">
         <port name="CalculatorPort" binding="tns:CalculatorBinding">
-            <soap:address location="http://localhost/tsf/guia2/calculator/soap-server.php"/>
+            <soap:address location="http://localhost/T-picos-en-software-/Calculators/soap-server.php"/>
         </port>
     </service>
 </definitions>

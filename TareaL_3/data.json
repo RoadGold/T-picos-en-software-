@@ -1,0 +1,32 @@
+{
+    "1": {
+        "id": 1,
+        "nombre": "Juan P ́erez",
+        "curso": "Matem ́aticas",
+        "nota": 15
+    },
+    "2": {
+        "id": 2,
+        "nombre": "Mar ́ıa Garc ́ıa",
+        "curso": "Ciencias",
+        "nota": 18
+    },
+    "3": {
+        "id": 3,
+        "nombre": "Carlos L ́opez",
+        "curso": "Historia",
+        "nota": 12
+    },
+    "4": {
+        "id": 4,
+        "nombre": "Ana Rodr ́ıguez",
+        "curso": "Geograf ́ıa",
+        "nota": 8
+    },
+    "5": {
+        "id": 5,
+        "nombre": "Luis Mart ́ınez",
+        "curso": "F ́ısica",
+        "nota": 19
+    }
+}
