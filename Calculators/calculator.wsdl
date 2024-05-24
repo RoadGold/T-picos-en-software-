@@ -32,13 +32,6 @@
                     </xsd:all>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="SubtractRequest">
-                <xsd:complexType>
-                    <xsd:all>
-                        <xsd:element name="result" type="xsd:float"/>
-                    </xsd:all>
-                </xsd:complexType>
-            </xsd:element>
             <xsd:element name="MultiplyRequest">
                 <xsd:complexType>
                     <xsd:all>
