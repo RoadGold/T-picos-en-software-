@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions name="CalculatorService"
-    targetNamespace="http://example.com/calculator"
-    xmlns:tns="http://example.com/calculator"
+    targetNamespace="http://localhost/T-picos-en-software-/Calculators"
+    xmlns:tns="http://localhost/T-picos-en-software-/Calculators"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
     xmlns="http://schemas.xmlsoap.org/wsdl/">
 
     <types>
-        <xsd:schema targetNamespace="http://example.com/calculator">
+        <xsd:schema targetNamespace="http://localhost/T-picos-en-software-/Calculators">
             <xsd:element name="AddRequest">
                 <xsd:complexType>
                     <xsd:all>
@@ -132,7 +132,7 @@
     <binding name="CalculatorBinding" type="tns:CalculatorPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="Add">
-            <soap:operation soapAction="http://example.com/calculator/Add"/>
+            <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Add"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -142,7 +142,7 @@
         </operation>
 
         <operation name="Subtract">
-            <soap:operation soapAction="http://example.com/calculator/Subtract"/>
+            <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Subtract"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -152,7 +152,7 @@
         </operation>
 
         <operation name="Multiply">
-            <soap:operation soapAction="http://example.com/calculator/Multiply"/>
+            <soap:operation soapAction="http://localhost/tsf/guia2/calculator/calculator/Multiply"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -162,7 +162,7 @@
         </operation>
 
         <operation name="Divide">
-            <soap:operation soapAction="http://example.com/calculator/Divide"/>
+            <soap:operation soapAction="http://localhost/tsf/guia2/calculator/calculator/Divide"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -175,7 +175,7 @@
 
     <service name="CalculatorService">
         <port name="CalculatorPort" binding="tns:CalculatorBinding">
-            <soap:address location="http://localhost/soap-server.php"/>
+            <soap:address location="http://localhost/tsf/guia2/calculator/soap-server.php"/>
         </port>
     </service>
 </definitions>
