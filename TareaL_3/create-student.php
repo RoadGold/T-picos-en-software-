@@ -1,7 +1,17 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verificar si el archivo JSON existe y es legible
+    if (!file_exists('data.json')) {
+        file_put_contents('data.json', json_encode([]));  // Crear el archivo si no existe
+    }
+
     // Lee el contenido del archivo JSON y decodifícalo a un array asociativo de PHP
     $data = json_decode(file_get_contents('data.json'), true);
+
+    // Asegurarse de que $data sea un array
+    if (!is_array($data)) {
+        $data = [];
+    }
 
     // Obtener los datos enviados en la solicitud POST
     $new_student = array(
@@ -29,7 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data[$new_student['id']] = $new_student;
 
     // Guardar el array actualizado de vuelta al archivo JSON
-    file_put_contents('data.json', json_encode($data, JSON_PRETTY_PRINT));
+    if (file_put_contents('data.json', json_encode($data, JSON_PRETTY_PRINT)) === false) {
+        header('HTTP/1.0 500 Internal Server Error');
+        echo json_encode(array('error' => 'Error al guardar los datos.'));
+        exit;
+    }
 
     // Devolver una respuesta de éxito
     header('Content-Type: application/json');
