@@ -27,19 +27,22 @@ class CalculatorService {
         return array('result' => $a / $b);
     }
 
-    public function Modulus($parameters) {
+    public function Modulo($parameters) {
+        $a = $parameters->a;
+        $b = $parameters->b;
+        if ($b == 0) {
+            throw new SoapFault("DivisionByZero", "Cannot modulo by zero");
+        }
+        return array('result' => $a % $b);
+    }
+
+    public function Cociente($parameters) {
         $a = $parameters->a;
         $b = $parameters->b;
         if ($b == 0) {
             throw new SoapFault("DivisionByZero", "Cannot divide by zero");
         }
-        return array('result' => $a % $b);
-    }
-
-    public function Power($parameters) {
-        $a = $parameters->a;
-        $b = $parameters->b;
-        return array('result' => pow($a, $b));
+        return array('result' => (int)($a / $b));
     }
 }
 
