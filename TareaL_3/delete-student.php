@@ -1,10 +1,19 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Verificar si la solicitud es DELETE
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+    // Leer la entrada de la solicitud
+    parse_str(file_get_contents('php://input'), $_DELETE);
+
     // Lee el contenido del archivo JSON y decodifícalo a un array asociativo de PHP
     $data = json_decode(file_get_contents('data.json'), true);
 
-    // Obtener el parámetro 'id' enviado en la solicitud POST
-    $id = isset($_POST['id']) ? $_POST['id'] : null;
+    // Asegurarse de que $data sea un array
+    if (!is_array($data)) {
+        $data = [];
+    }
+
+    // Obtener el parámetro 'id' enviado en la solicitud DELETE
+    $id = isset($_DELETE['id']) ? $_DELETE['id'] : null;
 
     // Validar que el parámetro 'id' está presente
     if ($id === null) {
@@ -21,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Guardar el array vacío de vuelta al archivo JSON
         file_put_contents('data.json', json_encode($data, JSON_PRETTY_PRINT));
 
-        // Devolver una respuesta de éxito
+        // Devolver una respuesta de éxito con los datos actualizados
         header('Content-Type: application/json');
-        echo json_encode(array('message' => 'Todos los estudiantes han sido eliminados exitosamente.'));
+        echo json_encode(array('message' => 'Todos los estudiantes han sido eliminados exitosamente.', 'data' => $data));
     } else {
         // Verificar si el estudiante con el ID proporcionado existe
         if (!isset($data[$id])) {
@@ -38,12 +47,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Guardar el array actualizado de vuelta al archivo JSON
         file_put_contents('data.json', json_encode($data, JSON_PRETTY_PRINT));
 
-        // Devolver una respuesta de éxito
+        // Devolver una respuesta de éxito con los datos actualizados
         header('Content-Type: application/json');
-        echo json_encode(array('message' => 'Estudiante eliminado exitosamente.'));
+        echo json_encode(array('message' => 'Estudiante eliminado exitosamente.', 'data' => $data));
     }
 } else {
-    // Si no se usa el método POST, mostrar un mensaje de error
+    // Si no se usa el método DELETE, mostrar un mensaje de error
     header('HTTP/1.0 405 Method Not Allowed');
     echo json_encode(array('error' => 'Método no permitido.'));
 }

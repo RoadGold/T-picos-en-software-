@@ -1,32 +1,44 @@
 {
     "1": {
         "id": 1,
-        "nombre": "Juan P ́erez",
-        "curso": "Matem ́aticas",
-        "nota": 15
+        "nombre": "Juan P\u00e9rez",
+        "curso": "Matem\u00e1ticas",
+        "nota": 90
     },
     "2": {
         "id": 2,
-        "nombre": "Mar ́ıa Garc ́ıa",
+        "nombre": "Mar \u0301\u0131a Garc \u0301\u0131a",
         "curso": "Ciencias",
         "nota": 18
     },
     "3": {
         "id": 3,
-        "nombre": "Carlos L ́opez",
+        "nombre": "Carlos L \u0301opez",
         "curso": "Historia",
         "nota": 12
     },
     "4": {
         "id": 4,
-        "nombre": "Ana Rodr ́ıguez",
-        "curso": "Geograf ́ıa",
+        "nombre": "Ana Rodr \u0301\u0131guez",
+        "curso": "Geograf \u0301\u0131a",
         "nota": 8
     },
     "5": {
         "id": 5,
-        "nombre": "Luis Mart ́ınez",
-        "curso": "F ́ısica",
+        "nombre": "Luis Mart \u0301\u0131nez",
+        "curso": "F \u0301\u0131sica",
         "nota": 19
+    },
+    "6": {
+        "id": 6,
+        "nombre": "Stefan",
+        "curso": "Ingles",
+        "nota": 10
+    },
+    "7": {
+        "id": 7,
+        "nombre": "Gonzalo",
+        "curso": "Aritmetica",
+        "nota": 80
     }
 }

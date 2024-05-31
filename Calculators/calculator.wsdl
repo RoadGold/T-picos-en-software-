@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions name="CalculatorService"
-    targetNamespace="http://localhost/T-picos-en-software-/Calculators"
-    xmlns:tns="http://localhost/T-picos-en-software-/Calculators"
+    targetNamespace="http://example.com/calculator"
+    xmlns:tns="http://example.com/calculator"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
     xmlns="http://schemas.xmlsoap.org/wsdl/">
-
     <types>
-        <xsd:schema targetNamespace="http://localhost/T-picos-en-software-/Calculators">
+        <xsd:schema targetNamespace="http://example.com/calculator">
             <xsd:element name="AddRequest">
                 <xsd:complexType>
                     <xsd:all>
@@ -68,7 +67,7 @@
                     </xsd:all>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="ModulusRequest">
+            <xsd:element name="ModuloRequest">
                 <xsd:complexType>
                     <xsd:all>
                         <xsd:element name="a" type="xsd:float"/>
@@ -76,7 +75,22 @@
                     </xsd:all>
                 </xsd:complexType>
             </xsd:element>
-            <xsd:element name="ModulusResponse">
+            <xsd:element name="ModuloResponse">
+                <xsd:complexType>
+                    <xsd:all>
+                        <xsd:element name="result" type="xsd:float"/>
+                    </xsd:all>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CocienteRequest">
+                <xsd:complexType>
+                    <xsd:all>
+                        <xsd:element name="a" type="xsd:float"/>
+                        <xsd:element name="b" type="xsd:float"/>
+                    </xsd:all>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CocienteResponse">
                 <xsd:complexType>
                     <xsd:all>
                         <xsd:element name="result" type="xsd:float"/>
@@ -85,7 +99,6 @@
             </xsd:element>
         </xsd:schema>
     </types>
-
     <message name="AddRequest">
         <part name="parameters" element="tns:AddRequest"/>
     </message>
@@ -110,13 +123,18 @@
     <message name="DivideResponse">
         <part name="parameters" element="tns:DivideResponse"/>
     </message>
-    <message name="ModulusRequest">
-        <part name="parameters" element="tns:ModulusRequest"/>
+    <message name="ModuloRequest">
+        <part name="parameters" element="tns:ModuloRequest"/>
     </message>
-    <message name="ModulusResponse">
-        <part name="parameters" element="tns:ModulusResponse"/>
+    <message name="ModuloResponse">
+        <part name="parameters" element="tns:ModuloResponse"/>
     </message>
-
+    <message name="CocienteRequest">
+        <part name="parameters" element="tns:CocienteRequest"/>
+    </message>
+    <message name="CocienteResponse">
+        <part name="parameters" element="tns:CocienteResponse"/>
+    </message>
     <portType name="CalculatorPortType">
         <operation name="Add">
             <input message="tns:AddRequest"/>
@@ -134,16 +152,19 @@
             <input message="tns:DivideRequest"/>
             <output message="tns:DivideResponse"/>
         </operation>
-        <operation name="Modulus">
-            <input message="tns:ModulusRequest"/>
-            <output message="tns:ModulusResponse"/>
+        <operation name="Modulo">
+            <input message="tns:ModuloRequest"/>
+            <output message="tns:ModuloResponse"/>
+        </operation>
+        <operation name="Cociente">
+            <input message="tns:CocienteRequest"/>
+            <output message="tns:CocienteResponse"/>
         </operation>
     </portType>
-
     <binding name="CalculatorBinding" type="tns:CalculatorPortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="Add">
-            <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Add"/>
+            <soap:operation soapAction="http://example.com/calculator/Add"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -152,7 +173,7 @@
             </output>
         </operation>
         <operation name="Subtract">
-            <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Subtract"/>
+            <soap:operation soapAction="http://example.com/calculator/Subtract"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -161,7 +182,7 @@
             </output>
         </operation>
         <operation name="Multiply">
-            <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Multiply"/>
+            <soap:operation soapAction="http://example.com/calculator/Multiply"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -170,16 +191,25 @@
             </output>
         </operation>
         <operation name="Divide">
-            <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Divide"/>
+            <soap:operation soapAction="http://example.com/calculator/Divide"/>
             <input>
                 <soap:body use="literal"/>
             </input>
             <output>
-                <soap:body use="literal"/>  
+                <soap:body use="literal"/>
             </output>
         </operation>
-        <operation name="Modulus">
-            <soap:operation soapAction="http://localhost/T-picos-en-software-/Calculators/Modulus"/>
+        <operation name="Modulo">
+            <soap:operation soapAction="http://example.com/calculator/Modulo"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Cociente">
+            <soap:operation soapAction="http://example.com/calculator/Cociente"/>
             <input>
                 <soap:body use="literal"/>
             </input>
@@ -188,10 +218,9 @@
             </output>
         </operation>
     </binding>
-
     <service name="CalculatorService">
         <port name="CalculatorPort" binding="tns:CalculatorBinding">
-            <soap:address location="http://localhost/T-picos-en-software-/Calculators/soap-server.php"/>
+            <soap:address location="http://localhost/soap-server.php"/>
         </port>
     </service>
 </definitions>

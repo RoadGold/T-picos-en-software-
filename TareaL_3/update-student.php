@@ -1,14 +1,18 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Verificar si la solicitud es PUT
+if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    // Leer la entrada de la solicitud
+    parse_str(file_get_contents('php://input'), $_PUT);
+
     // Lee el contenido del archivo JSON y decodifícalo a un array asociativo de PHP
     $data = json_decode(file_get_contents('data.json'), true);
 
-    // Obtener los datos enviados en la solicitud POST
+    // Obtener los datos enviados en la solicitud PUT
     $updated_student = array(
-        "id" => isset($_POST['id']) ? (int)$_POST['id'] : null,
-        "nombre" => isset($_POST['nombre']) ? $_POST['nombre'] : null,
-        "curso" => isset($_POST['curso']) ? $_POST['curso'] : null,
-        "nota" => isset($_POST['nota']) ? (int)$_POST['nota'] : null
+        "id" => isset($_PUT['id']) ? (int)$_PUT['id'] : null,
+        "nombre" => isset($_PUT['nombre']) ? $_PUT['nombre'] : null,
+        "curso" => isset($_PUT['curso']) ? $_PUT['curso'] : null,
+        "nota" => isset($_PUT['nota']) ? (int)$_PUT['nota'] : null
     );
 
     // Validar que el ID está presente y no es nulo
@@ -39,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
     echo json_encode(array('message' => 'Estudiante actualizado exitosamente.'));
 } else {
-    // Si no se usa el método POST, mostrar un mensaje de error
+    // Si no se usa el método PUT, mostrar un mensaje de error
     header('HTTP/1.0 405 Method Not Allowed');
     echo json_encode(array('error' => 'Método no permitido.'));
 }
