@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #e2e2e2;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .product h2 {
+            margin: 0;
+            color: #007BFF;
+        }
+        .product p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Listado de Productos</h1>
+        <div class="product">
+            <h2>Producto 1</h2>
+            <p>Precio: $10.99</p>
+            <p>Descripción del Producto 1</p>
+        </div>
+        <div class="product">
+            <h2>Producto 2</h2>
+            <p>Precio: $19.99</p>
+            <p>Descripción del Producto 2</p>
+        </div>
+        <div class="product">
+            <h2>Producto 3</h2>
+            <p>Precio: $5.49</p>
+            <p>Descripción del Producto 3</p>
+        </div>
+    </div>
+</body>
+</html>
