@@ -1,0 +1,14 @@
+@startuml
+class Autor {
+  +nombre: String
+  +pais: String
+}
+
+class Libro {
+  +isbn: String
+  +titulo: String
+  +fecha: Date
+}
+
+Autor "1" -- "1..*" Libro
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+class Persona {
+  +dni: String
+  +nombres: String
+  +apellidos: String
+  +sexo: String
+  +fecha_nacimiento: Date
+  +fecha_fallecimiento: Date
+  +donador_organos: Boolean
+  +numero_hijos: Integer
+  +altura: Float
+  +peso: Float
+  +telefono: String[]
+}
+@enduml
